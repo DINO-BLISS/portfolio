@@ -1,1 +1,150 @@
-index
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Site</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/accueil.css">
+     <!-- Import de polices externes (Google Fonts) -->
+
+    
+</head>
+
+<body>
+    <!-- contenu de ma page -->
+    <header>
+        <h1>Bienvenue sur mon portfolio</h1>
+    </header>
+    <main>
+        <p>Ceci est ma page en HTML.</p>
+    </main>
+   
+</body>
+
+ <header id="haut"> aria-label="En-tête du site">
+        <figure aria-labelledby="figcaption-vv">
+            <img src="images/photo.jpg" alt="Photo de DINO BLISS">
+            <figcaption id="figcaption-vv">DINO BLISS</figcaption>
+        </figure>
+        
+        <a href="images/photo.jpg">Lien vers ma photo</a>
+        <h1>Portfolio de DINO BLISS</h1>
+        <nav role="navigation" aria-label="Navigation principale"></nav>
+        <nav>
+            <a href="index.html">Accueil</a> |
+            <a href="projets.html">Projets</a> |
+            <a href="https://www.univ-littoral.fr/" target="_blank">ULCO</a>
+        </nav>
+        <hr>
+    </header>
+
+    <main role="main" aria-labelledby="titre-projetX" class="projets">
+        <header>
+42
+                <h1 id="titre-projetX">Projet X</h1>
+43
+                <h2>Découverte du HTML et du CSS</h2>
+44
+                <figure>
+45
+                    <img src="images/projetX.png" alt="Capture d’écran du Projet X">
+46
+                    <figcaption>Image représentant le projet X</figcaption>
+47
+                </figure>
+48
+            </header>
+        <nav role="navigation" aria-label="Navigation interne à la page"></nav>
+        <nav>
+            <a href="#about">À propos</a>
+
+        </nav>
+
+        <section id="about" role="region" aria-labelledby="titre-about">
+            <h2 class="icon-about" id="titre-about">À propos</h2>
+            <p>Je suis étudiant a l'ULCO en première année. 18 ans. passionné de football et de musique.</p>
+            <address role="contentinfo" aria-label="Coordonnées"></address>
+            <p><strong>Localisation :</strong> Calais, France</p>
+            <p><strong>Email :</strong> <a
+                    href="mailto:dinoblissbenidanel@gmail.com">vincent.vanneste@univ-littoral.fr</a></p>
+
+    </main>
+
+    
+    <main>
+        <section>
+            <h2>Mes projets</h2>
+             <section aria-labelledby="liste-projets">
+            <h2 id="liste-projets">Liste des projets</h2>
+
+            <div class="projets">
+                <article aria-labelledby="titre-projet1">
+                    <h3 id="titre-projet1"><a href="projet1.html">Projet 1</a></h3>
+                    <figure class='premiere' aria-labelledby="fig-projet1">
+                        <img src="images/vignettes/projet1.jpg" alt="Aperçu du Projet 1">
+                        <figcaption id="fig-projet1">Aperçu du Projet 1</figcaption>
+                    </figure>
+                    
+                </article>
+
+                <article aria-labelledby="titre-projet2">
+                    <h3 id="titre-projet2"><a href="projet2.html">Projet 2</a></h3>
+                    <figure aria-labelledby="fig-projet2">
+                        <img src="images/vignettes/projet2.jpg" alt="Aperçu du Projet 2">
+                        <figcaption id="fig-projet2">Aperçu du Projet 2</figcaption>
+                    </figure>
+                    
+                </article>
+
+                <article aria-labelledby="titre-projet3">
+                    <h3 id="titre-projet3"><a href="projet3.html">Projet 3</a></h3>
+                    <figure aria-labelledby="fig-projet3">
+                        <img src="images/vignettes/projet3.jpg" alt="Aperçu du Projet 3">
+                        <figcaption id="fig-projet3">Aperçu du Projet 3</figcaption>
+                    </figure>
+                   
+                </article>
+
+                <article aria-labelledby="titre-projet4">
+                    <h3 id="titre-projet4"><a href="projet4.html">Projet 4</a></h3>
+                    <figure aria-labelledby="fig-projet4">
+                        <img src="images/vignettes/projet4.jpg" alt="Aperçu du Projet 4">
+                        <figcaption id="fig-projet4">Aperçu du Projet 4</figcaption>
+                    </figure>
+                   
+                </article>  
+
+                <article aria-labelledby="titre-projet5">
+                    <h3 id="titre-projet5"><a href="projet5.html">Projet 5</a></h3>
+                    <figure aria-labelledby="fig-projet5">
+                        <img src="images/vignettes/projet5.jpg" alt="Aperçu du Projet 5">
+                        <figcaption id="fig-projet5">Aperçu du Projet 5</figcaption>
+                    </figure>
+                    
+        </section>
+    </main>
+    <footer role="contentinfo" aria-label="Pied de page">
+        <hr>
+        <p>&copy; 2025 <strong>DINO BLISS</strong>. Tous droits réservés.
+             <!-- Réseaux sociaux -->
+        <div class="socials" aria-label="Réseaux sociaux">
+            <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/" target="_blank" aria-label="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://x.com/" target="_blank" aria-label="X">
+                <i class="fab fa-x-twitter"></i>
+            </a>
+        </div>
+    </footer>
+
+</body>
+
+</html>
