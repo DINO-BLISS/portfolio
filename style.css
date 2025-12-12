@@ -1,216 +1,626 @@
-/* ------------------- */
-/* Configuration */
-/* ------------------- */
+/* ==========================================================================
+   Variables Sémantiques
+   ========================================================================== */
 :root {
-  --bg: #ffffff;
-  --text: #0d1b2a;
-  --muted: #6c7a89;
-  --accent: #0066ff;
-  --radius: 12px;
-  --max-width: 1100px;
-  font-family: "Inter", sans-serif;
+
+    /* === Couleurs de Marque (Brand) === */
+    --color-brand-primary: #0073e6;
+    --color-brand-dark: #004a99;
+    --color-brand-accent: #0066cc;
+    /* Utilisé pour les bordures, liens... */
+    --color-brand-hover: #00a2ff;
+    /* Pour les survols interactifs */
+
+    /* === Couleurs de Fond (Background) === */
+    --color-bg-body: linear-gradient(135deg, #e8f0ff 0%, #f9fcff 100%);
+    --color-bg-header: linear-gradient(135deg, var(--color-brand-primary), var(--color-brand-dark));
+    --color-bg-footer: linear-gradient(135deg, #1e3a5f, #0a2340, #224c80, #162d50);
+    --color-bg-nav-hover: #ddd;
+    --color-bg-card-light: #f0f8ff;
+    /* Pour dégradé carte projet */
+    --color-bg-card-mid: #d0f0ff;
+    /* Pour dégradé carte projet */
+    --color-bg-card: linear-gradient(135deg,
+            var(--color-text-inverted, #fff) 0%,
+            var(--color-bg-card-light, #f0f8ff) 25%,
+            var(--color-bg-card-mid, #d0f0ff) 50%,
+            var(--color-bg-card-light, #f0f8ff) 75%,
+            var(--color-text-inverted, #fff) 100%);
+
+    /* === Couleurs de Texte === */
+    --color-text-primary: #222;
+    /* Corps de texte principal */
+    --color-text-secondary: #333;
+    /* Plus clair (ex: survol nav) */
+    --color-text-heading: #1e3a5f;
+    /* Titres (H1, H2) dans Main */
+    --color-text-inverted: white;
+    /* Texte sur fonds sombres (header, footer) */
+    --color-text-nav-link: #bfc5cb;
+    /* Liens nav header (discret) */
+    --color-text-caption: #666;
+    /* Légendes projet */
+
+    /* === Couleurs de Bordure et UI === */
+    --color-border-subtle: #ddd;
+    /* Bordures discrètes (header) */
+    --color-border-medium: #ccc;
+    /* Bordures projet */
+    --color-ui-nav-bar: white;
+    /* Barre animée nav */
+
+    /* === Polices === */
+    --font-family-body: 'Poppins', Arial, sans-serif;
+    --font-family-heading: 'Roboto', sans-serif;
+    --font-weight-heading: 600;
+
+    /* === Échelle de Typographie Fluide === */
+    --font-size-body: clamp(0.95rem, 0.9rem + 0.2vw, 1.1rem);
+    --font-size-caption-avatar: clamp(0.85rem, 0.8rem + 0.2vw, 1rem);
+    --font-size-caption-project: clamp(0.8rem, 0.75rem + 0.2vw, 0.85rem);
+    --font-size-p-project: clamp(0.85rem, 0.8rem + 0.2vw, 0.9rem);
+    --font-size-h1-header: clamp(2rem, 1.75rem + 1vw, 2.5rem);
+    --font-size-h1-main: clamp(2rem, 1.8rem + 0.5vw, 2.2rem);
+    --font-size-h2: clamp(1.25rem, 1.1rem + 0.5vw, 1.5rem);
+    --font-size-h3-project: clamp(1rem, 0.95rem + 0.2vw, 1.1rem);
+    --font-size-h2-project: clamp(1.5rem, 1.3rem + 1vw, 1.8rem);
+    --font-size-social-icon: clamp(1.5rem, 1.4rem + 0.5vw, 1.75rem);
+
+    /* === Espacements === */
+    --spacing-xs: 8px;
+    /* 0.5rem */
+    --spacing-sm: 10px;
+    /* 0.625rem */
+    --spacing-md: 12px;
+    /* 0.75rem */
+    --spacing-lg: 16px;
+    /* 1rem */
+    --spacing-xl: 20px;
+    /* 1.25rem (ex: padding section) */
+    --spacing-xxl: 32px;
+    /* 2rem */
+
+    /* === Tailles de Layout === */
+    --avatar-size-mobile: 120px;
+    --avatar-size-desktop: 150px;
+    --container-max-width: 1000px;
+
+    /* === Arrondis (Borders) === */
+    --border-radius-sm: 4px;
+    --border-radius-md: 6px;
+    --border-radius-lg: 8px;
+
+    /* === Ombres (Shadows) === */
+    --shadow-card: 0 2px 6px rgba(0, 0, 0, 0.1);
+    --shadow-header: 0 4px 10px rgba(0, 0, 0, 0.15);
+    --shadow-image: 0 4px 8px rgba(0, 0, 0, 0.1);
+    --shadow-avatar-hover: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --shadow-card-hover: 0 8px 20px rgba(0, 0, 0, 0.2);
+    --shadow-text: 1px 1px 2px rgba(0, 0, 0, 0.25);
 }
 
-* { box-sizing: border-box; }
-body { margin: 0; background: var(--bg); color: var(--text); line-height: 1.6; }
 
-h1, h2, h3 { margin-top: 0; }
+/* ==========================================================================
+   CSS Général
+   ========================================================================== */
 
-/* ------------------- */
-/* Layout global */
-/* ------------------- */
-.container {
-  width: 90%;
-  max-width: var(--max-width);
-  margin: auto;
+/* --- Body --- */
+body {
+    font-family: var(--font-family-body);
+    color: var(--color-text-primary);
+    line-height: 1.5;
+    font-size: var(--font-size-body);
+    margin: 0;
+    background: var(--color-bg-body);
+    transition: background 0.5s ease;
 }
 
-.section {
-  padding: 4rem 0;
+/* --- Médias fluides --- */
+img,
+video,
+iframe {
+    max-width: 100%;
+    height: auto;
 }
 
-.section.alt {
-  background: #f5f7fa;
-}
-
-/* ------------------- */
-/* Header */
-/* ------------------- */
-.header {
-  position: sticky;
-  top: 0;
-  background: rgba(255,255,255,0.9);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid #eee;
-  z-index: 20;
-}
-
-.nav-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 0;
-}
-
-.logo { font-size: 1.3rem; font-weight: bold; }
-
-.nav {
-  display: flex;
-  gap: 1rem;
-}
-
-.nav a {
-  text-decoration: none;
-  color: var(--muted);
-}
-
-.nav a:hover {
-  color: var(--text);
-}
-
-.menu-toggle {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-}
-
-/* ------------------- */
-/* Hero */
-/* ------------------- */
-.hero {
-  padding: 5rem 0;
-  background: linear-gradient(to bottom right, #eef2ff, white);
-}
-
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1fr 300px;
-  gap: 2rem;
-  align-items: center;
-}
-
-.hero-text h2 {
-  font-size: 2.2rem;
-}
-
-.highlight {
-  color: var(--accent);
-}
-
-.btn {
-  display: inline-block;
-  padding: 0.7rem 1.2rem;
-  background: var(--accent);
-  color: white;
-  text-decoration: none;
-  border-radius: var(--radius);
-}
-
-.btn.outline {
-  background: none;
-  border: 2px solid var(--accent);
-  color: var(--accent);
-}
-
-.cta {
-  margin-top: 1rem;
-  display: flex;
-  gap: 1rem;
-}
-
-.avatar {
-  width: 220px;
-  height: 220px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #cbd5ff, #fff);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: bold;
-}
-
-/* ------------------- */
-/* Projets */
-/* ------------------- */
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1.2rem;
-}
-
-.project-card {
-  background: white;
-  padding: 1.5rem;
-  border-radius: var(--radius);
-  border: 1px solid #ddd;
-  display: flex;
-  flex-direction: column;
-  gap: .5rem;
-}
-
-.project-link {
-  color: var(--accent);
-  text-decoration: none;
-  margin-top: auto;
-}
-
-/* ------------------- */
-/* Contact */
-/* ------------------- */
-.contact-form {
-  max-width: 600px;
-}
-
-.contact-form label {
-  display: block;
-  margin-bottom: 1rem;
-}
-
-.contact-form input,
-.contact-form textarea {
-  width: 100%;
-  padding: .6rem;
-  border-radius: var(--radius);
-  border: 1px solid #ccc;
-  font: inherit;
-}
-
-.form-result {
-  margin-top: 1rem;
-  color: var(--muted);
-}
-
-/* ------------------- */
-/* Footer */
-/* ------------------- */
-.footer {
-  padding: 2rem 0;
-  border-top: 1px solid #eee;
-  text-align: center;
-}
-
-/* ------------------- */
-/* Responsive */
-/* ------------------- */
-@media (max-width: 900px) {
-  .hero-grid {
-    grid-template-columns: 1fr;
+/* ==========================================================================
+   En-tête (Header)
+   ========================================================================== */
+body>header {
     text-align: center;
-  }
-  
-  .nav {
-    display: none;
-    flex-direction: column;
-    background: white;
-    position: absolute;
-    right: 1rem;
-    top: 70px;
-    padding: 1rem;
-    border-radius: 10px;
-  }
+    color: var(--color-text-inverted);
+    padding: var(--spacing-xl);
+    background: var(--color-bg-header);
+    border-bottom: 2px solid var(--color-border-subtle);
+    box-shadow: var(--shadow-header);
+    transition: background 0.3s ease;
+}
 
-  .menu-toggle {
-    display: block;
-  }
-} 
+/* --- Header H1 --- */
+body>header h1 {
+    font-family: var(--font-family-heading);
+    font-size: var(--font-size-h1-header);
+    letter-spacing: 0.5px;
+    text-shadow: var(--shadow-text);
+    margin: 10px 0;
+}
+
+/* --- Header Figure --- */
+body>header figure {
+    margin: 0 auto 10px;
+}
+
+/* --- Image de profil --- */
+body>header img {
+    width: var(--avatar-size-mobile);
+    border-radius: 50%;
+    border: 3px solid var(--color-brand-accent);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+body>header img:hover {
+    transform: scale(1.08) rotate(2deg);
+    box-shadow: var(--shadow-avatar-hover);
+}
+
+/* --- Légende (Figcaption) --- */
+body>header figcaption {
+    font-size: var(--font-size-caption-avatar);
+    margin-top: var(--spacing-xs);
+}
+
+/* --- Nav Principale (Liste) --- */
+body>header nav ul {
+    display: flex;
+    flex-direction: column;
+    /* Mobile First: empilé */
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: 0;
+    margin: 10px 0 0;
+    list-style: none;
+}
+
+/* --- Nav Principale (Lien) --- */
+body>header nav a {
+    text-decoration: none;
+    color: var(--color-text-nav-link);
+    font-weight: bold;
+    padding: 6px 10px;
+    border-radius: var(--border-radius-sm);
+    position: relative;
+    overflow: hidden;
+    transition: color 0.3s ease;
+}
+
+body>header nav a:hover {
+    background-color: var(--color-bg-nav-hover);
+    color: var(--color-text-secondary);
+}
+
+/* --- Barre animée Nav --- */
+body>header nav a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: var(--color-ui-nav-bar);
+    transition: width 0.3s ease;
+}
+
+body>header nav a:hover::after {
+    width: 100%;
+}
+
+/* --- Clic Nav --- */
+body>header nav li:active {
+    transform: scale(0.9);
+}
+
+/* ==========================================================================
+   Contenu Principal (Main)
+   ========================================================================== */
+main {
+    max-width: var(--container-max-width);
+    margin: auto;
+}
+
+/* --- Main H1 --- */
+main>h1 {
+    text-align: center;
+    color: var(--color-text-heading);
+    font-size: var(--font-size-h1-main);
+    margin: 20px 0;
+}
+
+/* --- Sections Main --- */
+main>section,
+main>article {
+    padding: 0 15px;
+}
+
+/* --- Main H2 --- */
+main>section h2,
+main>article h2 {
+    color: var(--color-text-heading);
+    font-size: var(--font-size-h2);
+}
+
+/* ==========================================================================
+   Pied de page (Footer)
+   ========================================================================== */
+footer {
+    color: var(--color-text-inverted);
+    text-align: center;
+    padding: var(--spacing-xl);
+    background: var(--color-bg-footer);
+    background-size: 200% 200%;
+    transition: background-position 0.5s ease;
+}
+
+footer:hover {
+    background-position: right bottom;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* --- Réseaux sociaux Footer --- */
+footer .socials {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-xl);
+    margin-top: 15px;
+}
+
+footer .socials a {
+    font-size: var(--font-size-social-icon);
+    color: var(--color-text-inverted);
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+footer .socials a:hover {
+    transform: translateY(-3px) scale(1.2);
+    color: var(--color-brand-hover);
+}
+
+
+/* ==========================================================================
+   Responsive (Point de rupture)
+   ========================================================================== */
+
+/* S'applique à partir de 768px et plus */
+
+@media (min-width: 768px) {
+
+    /* --- Restaure taille avatar desktop --- */
+    body>header img {
+        width: var(--avatar-size-desktop);
+    }
+
+    /* --- Restaure nav horizontale --- */
+    body>header nav ul {
+        flex-direction: row;
+        justify-content: center;
+        gap: 15px;
+    }
+}
+
+
+
+/* ==========================================================================
+   CSS Général
+   ========================================================================== */
+
+/* --- Body --- */
+body {
+    font-family: var(--font-family-body);
+    color: var(--color-text-primary);
+    line-height: 1.5;
+    font-size: var(--font-size-body);
+    margin: 0;
+    background: var(--color-bg-body);
+    transition: background 0.5s ease;
+}
+
+/* --- Médias fluides --- */
+img,
+video,
+iframe {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ==========================================================================
+   En-tête (Header)
+   ========================================================================== */
+body>header {
+    text-align: center;
+    color: var(--color-text-inverted);
+    padding: var(--spacing-xl);
+    background: var(--color-bg-header);
+    border-bottom: 2px solid var(--color-border-subtle);
+    box-shadow: var(--shadow-header);
+    transition: background 0.3s ease;
+}
+
+/* --- Header H1 --- */
+body>header h1 {
+    font-family: var(--font-family-heading);
+    font-size: var(--font-size-h1-header);
+    letter-spacing: 0.5px;
+    text-shadow: var(--shadow-text);
+    margin: 10px 0;
+}
+
+/* --- Header Figure --- */
+body>header figure {
+    margin: 0 auto 10px;
+}
+
+/* --- Image de profil --- */
+body>header img {
+    width: var(--avatar-size-mobile);
+    border-radius: 50%;
+    border: 3px solid var(--color-brand-accent);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+body>header img:hover {
+    transform: scale(1.08) rotate(2deg);
+    box-shadow: var(--shadow-avatar-hover);
+}
+
+/* --- Légende (Figcaption) --- */
+body>header figcaption {
+    font-size: var(--font-size-caption-avatar);
+    margin-top: var(--spacing-xs);
+}
+
+/* --- Nav Principale (Liste) --- */
+body>header nav ul {
+    display: flex;
+    flex-direction: column;
+    /* Mobile First: empilé */
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: 0;
+    margin: 10px 0 0;
+    list-style: none;
+}
+
+/* --- Nav Principale (Lien) --- */
+body>header nav a {
+    text-decoration: none;
+    color: var(--color-text-nav-link);
+    font-weight: bold;
+    padding: 6px 10px;
+    border-radius: var(--border-radius-sm);
+    position: relative;
+    overflow: hidden;
+    transition: color 0.3s ease;
+}
+
+body>header nav a:hover {
+    background-color: var(--color-bg-nav-hover);
+    color: var(--color-text-secondary);
+}
+
+/* --- Barre animée Nav --- */
+body>header nav a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: var(--color-ui-nav-bar);
+    transition: width 0.3s ease;
+}
+
+body>header nav a:hover::after {
+    width: 100%;
+}
+
+/* --- Clic Nav --- */
+body>header nav li:active {
+    transform: scale(0.9);
+}
+
+/* ==========================================================================
+   Contenu Principal (Main)
+   ========================================================================== */
+main {
+    max-width: var(--container-max-width);
+    margin: auto;
+}
+
+/* --- Main H1 --- */
+main>h1 {
+    text-align: center;
+    color: var(--color-text-heading);
+    font-size: var(--font-size-h1-main);
+    margin: 20px 0;
+}
+
+/* --- Sections Main --- */
+main>section,
+main>article {
+    padding: 0 15px;
+}
+
+/* --- Main H2 --- */
+main>section h2,
+main>article h2 {
+    color: var(--color-text-heading);
+    font-size: var(--font-size-h2);
+}
+
+/* ==========================================================================
+   Pied de page (Footer)
+   ========================================================================== */
+footer {
+    color: var(--color-text-inverted);
+    text-align: center;
+    padding: var(--spacing-xl);
+    background: var(--color-bg-footer);
+    background-size: 200% 200%;
+    transition: background-position 0.5s ease;
+}
+
+footer:hover {
+    background-position: right bottom;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* --- Réseaux sociaux Footer --- */
+footer .socials {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-xl);
+    margin-top: 15px;
+}
+
+footer .socials a {
+    font-size: var(--font-size-social-icon);
+    color: var(--color-text-inverted);
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+footer .socials a:hover {
+    transform: translateY(-3px) scale(1.2);
+    color: var(--color-brand-hover);
+}
+
+
+/* ==========================================================================
+   Responsive (Point de rupture)
+   ========================================================================== */
+
+/* S'applique à partir de 768px et plus */
+
+@media (min-width: 768px) {
+
+    /* --- Restaure taille avatar desktop --- */
+    body>header img {
+        width: var(--avatar-size-desktop);
+    }
+
+    /* --- Restaure nav horizontale --- */
+    body>header nav ul {
+        flex-direction: row;
+        justify-content: center;
+        gap: 15px;
+    }
+}
+
+/* ==========================================================================
+   En-tête d'Article
+   ========================================================================== */
+
+/* --- Conteneur de l'en-tête (article>header) --- */
+article>header {
+    /**********************/
+    /* Boîte & Espacement */
+    /**********************/
+    margin-bottom: var(--spacing-xxl);
+    /* 32px */
+
+    /***************************/
+    /* Alignement & Typographie */
+    /***************************/
+    text-align: center;
+}
+
+/* --- Image de l'en-tête d'article --- */
+article>header img {
+    /**************/
+    /* Dimensions */
+    /**************/
+    /* C'est déjà parfaitement responsive ! */
+    max-width: 100%;
+    height: auto;
+
+    /**********************/
+    /* Boîte & Espacement */
+    /**********************/
+    margin-top: var(--spacing-xl);
+    /* 20px */
+
+    /********************/
+    /* Bordures & Ombre */
+    /********************/
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-image);
+}
+
+/* ==========================================================================
+   Titres de Section (H2)
+   ========================================================================== */
+
+/* --- Style commun des H2 de section (avec icônes) --- */
+section h2 {
+    /***********/
+    /* Flexbox */
+    /***********/
+    display: flex;
+    align-items: center;
+
+    /**********************/
+    /* Boîte & Espacement */
+    /**********************/
+    gap: 0.5em;
+    margin-bottom: var(--spacing-lg);
+    /* 16px */
+
+    /***************/
+    /* Typographie */
+    /***************/
+    font-size: var(--font-size-h2);
+}
+
+/* ==========================================================================
+   Icônes des Titres (Pseudo-éléments)
+   ========================================================================== */
+
+/* --- Icône Description 📝 --- */
+#description-projet::before {
+    /***********************/
+    /* Contenu (Pseudo-élément) */
+    /***********************/
+    content: "\1F4DD";
+    /* Emoji "Note" (📝) */
+}
+
+/* --- Icône Objectifs 🎯 --- */
+#objectifs-projet::before {
+    /***********************/
+    /* Contenu (Pseudo-élément) */
+    /***********************/
+    content: "\1F3AF";
+    /* Emoji "Cible" (🎯) */
+}
+
+/* --- Icône Compétences 🛠️ --- */
+#competences-visees::before {
+    /***********************/
+    /* Contenu (Pseudo-élément) */
+    /***********************/
+    content: "\1F6E0";
+    /* Emoji "Outils" (🛠️) */
+}
+
+/* --- Icône Résultat ✅ --- */
+#resultat-projet::before {
+    /***********************/
+    /* Contenu (Pseudo-élément) */
+    /***********************/
+    content: "\2705";
+    /* Emoji "Coche" (✅) */
+}
