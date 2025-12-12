@@ -16,8 +16,8 @@ body {
         "main"
         "footer";
     font-family: 'Trebuchet MS', Arial, sans-serif;
-    background-color: lightgrey;
-    color: black;
+    background-color: black;
+    color: white;
 }
 
 li:hover {
@@ -30,8 +30,8 @@ header {
     display: grid;
     grid-template-columns: 15% 70% 15%;
     grid-template-areas: "logo menu recherche";
-    background: gray;
-    background-color: blue;
+    background: green;
+    background-color: green;
 }
 
 .logo,
@@ -44,7 +44,7 @@ header {
 }
 
 nav a {
-    color: black;
+    color: white;
     text-decoration: none;
     font-weight: bold;
     font-size: 2vh;
