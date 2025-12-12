@@ -1,0 +1,251 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ---------------- BODY ---------------- */
+body {
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-rows: 10vh auto 10vh;
+    grid-template-columns: 100%;
+    grid-template-areas:
+        "header"
+        "main"
+        "footer";
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    background-color: lightgrey;
+    color: black;
+}
+
+li:hover {
+    color: #4A90E2;
+}
+
+/* ---------------- HEADER ---------------- */
+header {
+    grid-area: header;
+    display: grid;
+    grid-template-columns: 15% 70% 15%;
+    grid-template-areas: "logo menu recherche";
+    background: gray;
+    background-color: blue;
+}
+
+.logo,
+.menu,
+.recherche {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2vw;
+}
+
+nav a {
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 2vh;
+}
+
+nav a:hover {
+    color: yellow;
+}
+
+a:hover {
+    color: blue;
+    cursor: pointer;
+}
+
+/* ---------------- MAIN LAYOUT ---------------- */
+main {
+    grid-area: main;
+    display: grid;
+    grid-template-columns: 20vw 60vw 20vw;
+    grid-template-areas: "colgauche zone3 zone4";
+    gap: 0;
+}
+
+.col-gauche {
+    grid-area: colgauche;
+    display: grid;
+    grid-template-rows: 50% 50%;
+    grid-template-areas:
+        "zone1"
+        "zone2";
+}
+
+.zone1,
+.zone2,
+.zone3,
+.zone4 {
+    padding: 3vh 3vw;
+    background: gray;
+}
+
+/* ---------------- FOOTER ---------------- */
+footer {
+    grid-area: footer;
+    display: grid;
+    grid-template-columns: 60% 20% 20%;
+    grid-template-areas: "legal contact autres";
+    background-color: blue;
+    color:#222;
+}
+
+.infos-legales,
+.contact,
+.autre {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: blue;
+}
+
+/* ---------------- TEXT ---------------- */
+h1 {
+    color: black;
+    text-align: center;
+    font-family: 'Arial';
+    font-size: 4vh;
+}
+
+p {
+    font-size: 2vh;
+    line-height: 1.5;
+    margin: 2vh 0;
+    font-family: 'Verdana';
+}
+
+/* ---------------- TABLE ---------------- */
+th, td {
+    border: 0.3vh solid black;
+    padding: 2vh;
+    text-align: center;
+    font-size: 2vh;
+}
+
+th {
+    background-color: blue;
+    color: white;
+}
+
+/* ---------------- CONTACT FORM ---------------- */
+.contact-form {
+    width: 90%;
+    max-width: 70vw;
+    margin: 0 auto;
+    background: white;
+    padding: 3vh 3vw;
+    border-radius: 2vw;
+    box-shadow: 0 0 4vh rgba(0,0,0,0.08);
+}
+
+.contact-form h1,
+.contact-form .lead {
+    text-align: center;
+    margin-bottom: 2vh;
+    color: #222;
+    font-size: 3vh;
+}
+
+.form-row {
+    display: flex;
+    gap: 2vw;
+    margin-bottom: 2vh;
+}
+
+.form-group {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 1vh;
+    font-size: 2vh;
+}
+
+/* ---------------- MODERN INPUTS ---------------- */
+input,
+textarea {
+    width: 100%;
+    padding: 2vh 2vw;
+    border: 0.3vh solid #d0d0d0;
+    border-radius: 1.5vw;
+    background: #f9f9f9;
+    font-size: 2vh;
+    font-family: inherit;
+    transition: 0.25s ease;
+    outline: none;
+}
+
+input:hover,
+textarea:hover {
+    border-color: #b5b5b5;
+}
+
+input:focus,
+textarea:focus {
+    border-color: #4A90E2;
+    background: white;
+    box-shadow: 0 0 2vw rgba(74,144,226,0.2);
+}
+
+textarea {
+    min-height: 20vh;
+    resize: vertical;
+}
+
+.btn {
+    display: inline-block;
+    padding: 2vh 3vw;
+    background: #333;
+    color: white;
+    border-radius: 1vw;
+    border: none;
+    font-size: 2vh;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.contact-meta {
+    font-size: 2vh;
+    color: #222;
+    margin-top: 2vh;
+    line-height: 1.6;
+}
+
+/* ---------------- GALLERY ---------------- */
+.gallery-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30vw, 1fr));
+    gap: 2vw;
+    padding: 2vh 0;
+}
+
+.gallery-item {
+    text-align: center;
+    background: #f5f5f5;
+    padding: 1vh 1vw;
+    border-radius: 1.5vw;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 2vh 4vh rgba(0,0,0,0.2);
+}
+
+.gallery-item img {
+    width: 100%;
+    border-radius: 1vw;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item img:hover {
+    transform: scale(1.05);
+}
