@@ -16,8 +16,8 @@ body {
         "main"
         "footer";
     font-family: 'Trebuchet MS', Arial, sans-serif;
-    background-color: black;
-    color: white;
+    background-color: lightgrey;
+    color: black;
 }
 
 li:hover {
@@ -30,8 +30,8 @@ header {
     display: grid;
     grid-template-columns: 15% 70% 15%;
     grid-template-areas: "logo menu recherche";
-    background: green;
-    background-color: green;
+    background: gray;
+    background-color: blue;
 }
 
 .logo,
@@ -44,7 +44,7 @@ header {
 }
 
 nav a {
-    color: white;
+    color: black;
     text-decoration: none;
     font-weight: bold;
     font-size: 2vh;
@@ -219,3 +219,33 @@ textarea {
     line-height: 1.6;
 }
 
+/* ---------------- GALLERY ---------------- */
+.gallery-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30vw, 1fr));
+    gap: 2vw;
+    padding: 2vh 0;
+}
+
+.gallery-item {
+    text-align: center;
+    background: #f5f5f5;
+    padding: 1vh 1vw;
+    border-radius: 1.5vw;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 2vh 4vh rgba(0,0,0,0.2);
+}
+
+.gallery-item img {
+    width: 100%;
+    border-radius: 1vw;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item img:hover {
+    transform: scale(1.05);
+}
